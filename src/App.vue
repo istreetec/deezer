@@ -6,13 +6,19 @@
 </template>
 
 <script>
-
-import NavBar from '@/components/NavBar.vue';
+import NavBar from "@/components/NavBar.vue";
 
 export default {
   name: "App",
   components: {
-    NavBar
+    NavBar,
   },
 };
 </script>
+
+<style lang="css" scoped>
+nav.bg-light {
+  background-color: #ffd166 !important;
+  color: #fff;
+}
+</style>

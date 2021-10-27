@@ -4,7 +4,7 @@ import Artist from "@/pages/Artist.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
-  { path: "/artist/:id", name: "Artist", component: Artist, props: true },
+  { path: "/artist/:id/:name", name: "Artist", component: Artist, props: true },
 ];
 
 const router = createRouter({

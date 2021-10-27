@@ -1,7 +1,13 @@
 <template>
-  <div class="col">
-    <div class="card">
-      <router-link :to="{ name: 'Artist', params: { id: artistInfo.id } }">
+  <div class="col-sm col-md-6 col-lg">
+    <div class="card" style="width: 18rem;">
+      <router-link
+        style="text-decoration: none;"
+        :to="{
+          name: 'Artist',
+          params: { id: artistInfo.id, name: artistInfo.name },
+        }"
+      >
         <img
           :src="artistInfo.picture"
           class="card-img-top"
@@ -9,11 +15,8 @@
         />
         <div class="card-body">
           <h5 class="card-title">{{ artistInfo.name }}</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <span>{{ artistInfo.nb_fan }} Fans</span>
+          <span>{{ artistInfo.nb_album }} Albums</span>
         </div></router-link
       >
     </div>
@@ -26,4 +29,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.card-body span,.card-title {
+  display: block;
+  color: black;
+}
+</style>

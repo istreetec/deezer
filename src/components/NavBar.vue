@@ -18,10 +18,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form>
           <input
+            v-debounce:400ms.cancelonempty="myFn"
             class="form-control me-2"
             type="search"
-            placeholder="Search"
-            aria-label="Search"
+            placeholder="Search an artist"
           />
         </form>
       </div>
@@ -30,7 +30,24 @@
 </template>
 
 <script>
+import { mapActions } from "pinia";
+import { useSearchResultsStore } from "@/components/store/searchResults";
+
 export default {
-  //
+  data() {
+    return {
+      search: null,
+    };
+  },
+
+  methods: {
+    ...mapActions(useSearchResultsStore, ["fetchResults"]),
+
+    async myFn(value) {
+      // invoke an action directly
+      await this.fetchResults(value);
+      this.$router.push("/");
+    },
+  },
 };
 </script>

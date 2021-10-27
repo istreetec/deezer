@@ -1,37 +1,30 @@
 <template>
   <div class="row align-items-start">
     <artist-card
-      :artist-info="artist"
-      v-for="artist in musicians"
-      :key="artist.id"
+      v-if="Object.keys(getResults).length"
+      :artist-info="getResults"
     ></artist-card>
   </div>
 </template>
 
 <script>
+import { mapState } from "pinia";
 import ArtistCard from "@/components/ArtistCard.vue";
-import { mapGetters } from "vuex";
+import { useSearchResultsStore } from "../components/store/searchResults";
 
 export default {
   components: {
     ArtistCard,
   },
-  computed: {
-    ...mapGetters({ musicians: 'getMusicians' }),
+
+  data() {
+    return {
+      artists: null,
+    };
   },
 
-  async created() {
-    this.$store.dispatch("fetchMusicians");
-
-    // const req = await fetch(
-    //   // "https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/artists"
-    //   "https://cors-anywhere.herokuapp.com/https://api.deezer.com/album/302127"
-    // );
-
-    // const res = await req.json();
-    // console.log(res);
+  computed: {
+    ...mapState(useSearchResultsStore, ["search", "getResults"]),
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

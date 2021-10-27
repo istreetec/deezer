@@ -11,9 +11,10 @@
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.0.0-beta3",
     "core-js": "^3.6.5",
+    "pinia": "^2.0.0-rc.10",
     "vue": "^3.0.0",
-    "vue-router": "4",
-    "vuex": "^4.0.2"
+    "vue-debounce": "^3.0.1",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
